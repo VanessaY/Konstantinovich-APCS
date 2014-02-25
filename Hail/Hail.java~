@@ -22,4 +22,16 @@ public class Hail{
 	return count;
     }
     
+    public int longestHail(int n){
+	return longestHailHelp(0, n);
+    }
+
+    public int longestHailHelp(int currentLong, int n){
+	if (hailLen(n) > currentLong)
+	    currentLong = n;
+	if (n==1)
+	    return currentLong;
+	else
+	    return longestHailHelp(currentLong, n-1);
+    }
 }
