@@ -5,7 +5,6 @@ public class Driver{
             int size = Integer.parseInt(args[0]);
 
             Knight t=new Knight(size);
-	    System.out.println(t);
 
 	    t.solve();//this prints the coordinate version of the solution
 
