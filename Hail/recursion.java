@@ -25,6 +25,7 @@ public class recursion{
 	hail(n);
 	return count;
     }
+
     public int longestHail(int n){
         /*put in your code here...*/
 	return longestHailHelp(0, n);
@@ -40,6 +41,8 @@ public class recursion{
     }
 
     public int fibIterHelper(int prev, int prevPrev, int n){
+	if (n == 0)
+	    return 0;
 	if (n == 1)
 	    return prev + prevPrev;
 	else{

@@ -10,7 +10,6 @@ public class recursion{
 
     int count = 0;
     public void hail(int n){
-	System.out.println(n);
 	count = count+1;
 	if (n==1)
 	    {}
@@ -26,6 +25,7 @@ public class recursion{
 	hail(n);
 	return count;
     }
+
     public int longestHail(int n){
         /*put in your code here...*/
 	return longestHailHelp(0, n);
@@ -41,7 +41,7 @@ public class recursion{
     }
 
     public int fibIterHelper(int prev, int prevPrev, int n){
-	if (n == 0)
+	if (n == 1)
 	    return prev + prevPrev;
 	else{
 	    int p = prev + prevPrev;
@@ -56,5 +56,14 @@ public class recursion{
 
     public recursion(){
         /*leave alone*/
+    }
+
+    public static void main(String[]args){
+        /*create an instance of what you are testing*/
+        recursion a = new recursion();
+        /*run calculations*/
+        System.out.println(a.fibItr(5));
+        System.out.println(a.hailLen(5));
+        System.out.println(a.longestHail(5));
     }
 }

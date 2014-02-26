@@ -32,6 +32,7 @@ public class Knight{
 		    if(!solved)solve(x-1, y+2, n+1);
 		    if(!solved)solve(x+1, y-2, n+1);
 		    if(!solved)solve(x-1, y-2, n+1);
+		    if(!solved)board[x][y] = 0;
 		}
 	    }
 	}
