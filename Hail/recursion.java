@@ -28,11 +28,11 @@ public class recursion{
 
     public int longestHail(int n){
         /*put in your code here...*/
-	return longestHailHelp(0, n);
+	return longestHailHelp(1, n);
     }
 
    public int longestHailHelp(int currentLong, int n){
-	if (hailLen(n) > currentLong)
+       if (hailLen(n) > hailLen(currentLong))
 	    currentLong = n;
 	if (n==1)
 	    return currentLong;
