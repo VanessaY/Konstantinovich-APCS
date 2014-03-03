@@ -1,0 +1,1 @@
+I had some help for the printing statement and the backtracking from Victor.

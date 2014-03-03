@@ -8,37 +8,6 @@ public class Knight{
 	size = n;
     }
 
-    /*
-    public void closedSolve(){
-	solved = false;
-	solve(0, 0, 1);
-    }
-
-    public void closedSolve(int x, int y, int n){
-	if (n <= size*size){
-	    if (x>=0 && x<size && y>=0 && y<size){
-		if (board[x][y] == 0){
-		    board[x][y] = n;
-		    if(!solved)solve(x+2, y+1, n+1);
-		    if(!solved)solve(x+2, y-1, n+1);
-		    if(!solved)solve(x-2, y+1, n+1);
-		    if(!solved)solve(x-2, y-1, n+1);
-		    if(!solved)solve(x+1, y+2, n+1);
-		    if(!solved)solve(x-1, y+2, n+1);
-		    if(!solved)solve(x+1, y-2, n+1);
-		    if(!solved)solve(x-1, y-2, n+1);
-		    if(!solved)board[x][y] = 0;
-		    if(solved)
-			System.out.println("Step " + n + ": " + x + " , " + y);
-		}
-	    }
-	}
-	else if (x == 0 && y == 0)
-	    solved = true;
-	
-    }
-    */
-
     public void solve(){
 	solved = false;
 	solve(0, 0, 1);
