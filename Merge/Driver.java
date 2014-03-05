@@ -5,8 +5,10 @@ public class Driver{
 
     public static void main(String[] args){
 	mergeSort M = new mergeSort();
-	int[] a = {1,12,13,42,50,3,9,14,100};	
-	int[] b = {1,12,13,42,50,3,9,14,100};
-	System.out.println(Arrays.toString(M.merge(a, b)));
+	int[] list = M.randomthing(10000000);
+	long n1 = System.currentTimeMillis();
+        M.msort(list);
+	long n2 = System.currentTimeMillis();
+	System.out.println(n2 - n1);
     }
 }
