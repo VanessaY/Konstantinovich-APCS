@@ -15,22 +15,30 @@ public class mergeSort{
       copy ans to a
       copyof?
     */
+    
+    public void copy3(int[] a, int[] b, int[] c){
+	for (int i=0; i<b.length; i++){
+	    b[i] = a[i];
+	}
+	for (int i=0; i<c.length; i++){
+	    c[i] = a[b.length + i];
+	}
+    }
 
+    public void copy2(int[] original, int[] copy){
+	for (int i=0; i<copy.length; i++){
+	    copy[i] = original[i];
+	}
+    }
+    /*
     public void msort(int[]a){
 	int[] ans = new int[a.length];
-	int[] b, c;
+	int[] b = new int[a.length/2];
+	int[] c = new int[a.length-b.length];
+
 	if(a.length>1){
 	    //split a
-	    b = new int[a.length/2];
-	    c = new int[a.length - b.length];
-
-	    //copy function (make one) a into the 2 arrays
-	    for (int i=0; i<b.length; i++){
-		b[i] = a[i];
-	    }
-	    for (int i=0; i<c.length; i++){
-		c[i] = a[b.length + i];
-	    }
+	    copy3(a, b, c);
 
 	    //msort each half
 	    msort(b);
@@ -38,21 +46,18 @@ public class mergeSort{
 	    
 	    //ans = merge
 	    ans = merge(b, c);
-
+	    
 	    //copy ans into a
-	    a.copyOf(ans, ans.length);
+	    copy2(ans, a);
 	}
-	else{
-	    a.copyOf(a);
-	}   
-    }
+    }   
+    */
     public int[] merge(int[] a, int[] b){
 	int[] result = new int[a.length + b.length];
 	int currenta = 0;
 	int currentb = 0;
 
 	for(int i=0; i<a.length + b.length; i++){
-	    System.out.println(currenta + ", " + currentb);
 	    if (currenta == a.length){
 		for (int x=currentb; x<b.length; x++){
 		    result[i] = b[x];
