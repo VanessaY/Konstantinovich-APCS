@@ -1,11 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-//a and b are sorted
-//smaller numbers into smaller indices
-
-public class mergeSort{
-    
+public class msortopt{
     public void copy3(int[] a, int[] b, int[] c){
 	for (int i=0; i<b.length; i++){
 	    b[i] = a[i];
@@ -21,6 +17,7 @@ public class mergeSort{
 	}
     }
     
+    public copy(
     public void msort(int[]a){
 	if(a.length>1){
 	    //split a
@@ -61,15 +58,4 @@ public class mergeSort{
 	}
 	return result;
     }
-    
-    //testing purposes only pls dont look thank
-    public int[] randomthing(int l){
-	Random r = new Random();
-	int[] x = new int[l];
-	for (int i=0; i<l; i++){
-	    x[i] = r.nextInt(10000);
-	}
-	return x;
-    }
-
 }

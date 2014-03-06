@@ -10,5 +10,11 @@ public class Driver{
         M.msort(list);
 	long n2 = System.currentTimeMillis();
 	System.out.println(n2 - n1);
+
+	list = M.randomthing(10000000);
+	long n3 = System.currentTimeMillis();
+        Arrays.sort(list);
+	long n4 = System.currentTimeMillis();
+	System.out.println(n4 - n3);
     }
 }
