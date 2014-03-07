@@ -1,0 +1,16 @@
+import java.io.*;
+import java.util.*;
+
+public class person implements Comparable{
+    
+    private String name;
+    
+    public int compareTo(Object other){
+	if (other instanceof person){
+	    
+	}
+	else{
+	    System.out.println("Object is not a person");
+	    return -1;
+	}
+    }
