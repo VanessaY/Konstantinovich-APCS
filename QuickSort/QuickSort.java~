@@ -1,0 +1,31 @@
+import java.util.*;
+import java.io.*;
+
+public class QuickSort{
+
+    public int quickSelect(int[]l, int k){
+	return quickSelect(l, k, 0, l.length-1);
+    }
+
+    public int quickSelect(int[] l, int k, int left, int right){
+	
+    }
+
+    public int partition(int[] l, int left, int right){
+	// select a pivot within left and right
+x
+	Random r = new Random();
+	int pivot = r.nextInt(left,right);
+	
+	// partition (put lower to left, higher to right)
+	
+	int p
+	int leftint = left;
+	int rightint= right;
+	for (int i=left; i<=right, i++){
+	    if l[i]
+
+	// return index of pivot
+	
+    }
+}
