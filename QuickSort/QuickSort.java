@@ -23,30 +23,37 @@ public class QuickSort{
 	// select a pivot within left and right
 
 	Random r = new Random();
-	int pivot = r.nextInt(left,right);
+	int pivot = left + r.nextInt(right-left);
 	
 	// partition (put lower to left, higher to right)
 	
 	int compare = l[pivot];
 	int leftint = left;
-	int rightint = right;
+	int rightint = right-1;
 	
 	//swap pivot and last obj in array
 	swap(l, pivot, l.length-1);
 
 	//swap, check from left
-	while (leftint != rightint + 1){
-	    if (l[left]>compare){
-		swap(l, left, right);
-		right++;
-	    }
-	    else{
+	//i and l and right
+
+	// l l l l l l
+	// i i i i l l 
+	// 2 3 4 2 4 4 8 8 8 8 8 8 5
+	for (int i=left; i<right; i++){
+	    if (l[i] < compare){
+		swap(l, i, left);
 		left++;
 	    }
 	}
-	
-	//reinsert 
-	swap(l, l[l.length-1], l[right]);
+      	if (l[left] >= compare){
+	    swap(l, l.length-1, left);
+	    return left;
+	}
+	else{
+	    swap(l, l.length-1, left+1);
+	    return left+1;
+	}
     }
 
     public void swap(int[] l, int a, int b){
@@ -55,10 +62,4 @@ public class QuickSort{
 	l[b] = tmp;
     }
 
-    public static void main(String[] args){
-	int[] l = {21,65,42,82,35,65,54,321,5,121,6531,16,351,341,213,1};
-	
-	this.partition(l
-    }
-       
 }

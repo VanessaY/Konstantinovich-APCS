@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.*;
 
 public class Person implements Comparable{
-    
     private String name;
 
     public Person(String s){
@@ -22,6 +21,10 @@ public class Person implements Comparable{
 	    String othername = ((Person)other).getName();
 	    return name.compareTo(othername);
 	}
-	return 0;	
+	else{
+	    System.out.println("Object not of Person class");
+	    return 9000;
+	    //not sure what else to do;
+	}
     }
 }
