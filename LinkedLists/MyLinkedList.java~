@@ -1,0 +1,20 @@
+public class MyLinkedList{
+    private Node head;
+
+    public MyLinkedList(){
+	head=null;
+    }
+    
+    public int length(){
+	size = 0;
+	Node next = head.getNext();;
+	while(next != null){
+	    size++;
+	    next = next.getNext();
+	}
+    }
+
+	    
+    }
+    public void add(String s, int position){
+    }
