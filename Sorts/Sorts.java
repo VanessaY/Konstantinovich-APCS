@@ -2,8 +2,10 @@ import java.io.*;
 import java.util.*;
 
 public class Sorts{
-
-    public static void copy3(ArrayList<String> a, ArrayList<String> b, ArrayList<String> c){
+    
+    public static void copy3(ArrayList<T> a,
+			     ArrayList<T> b,
+			     ArrayList<T> c){
     	for (int i=0; i<a.size()/2; i++){
 	    b.add(a.get(i));  
 	}
@@ -13,18 +15,21 @@ public class Sorts{
 
     }
 
-    public static void copy2(ArrayList<String> original, ArrayList<String> copy){	
+    public static void copy2(ArrayList<T> original, 
+			     ArrayList<T> copy){	
 	copy.clear();
 	for (int i=0; i<original.size(); i++){
 	    copy.add(original.get(i));
 	}		
     }
-    
-    public static void msort(ArrayList<String> a){
+
+    //returns class of type T
+    //Requires arraylist of T
+    public static <T extends Comparable<T>> void msort(ArrayList<T> a){
 	if(a.size()>1){
 	    //split a
-	    ArrayList<String> b = new ArrayList<String>();
-	    ArrayList<String> c = new ArrayList<String>();
+	    ArrayList<T> b = new ArrayList<T>();
+	    ArrayList<T> c = new ArrayList<T>();
 	    copy3(a, b, c);
 
 	    //msort each half
@@ -32,19 +37,19 @@ public class Sorts{
 	    msort(c);
 
 	    //ans = merge
-	    ArrayList<String> ans = merge(b, c);
+	    ArrayList<T> ans = merge(b, c);
 
 	    //copy ans into a
 	    copy2(ans, a);
 	}
-    }   
+    }    
     
-    public static ArrayList<String> merge(ArrayList<String> a, 
-					  ArrayList<String> b){
-	ArrayList<String> result = new ArrayList<String>();
+    public static ArrayList<T extends Comparable<T>> merge(ArrayList<T> a,
+							   ArrayList<T> b){
+	ArrayList<T> result = new ArrayList<T>();
 	int currenta = 0;
 	int currentb = 0;
-
+	
 	for(int i=0; i<a.size() + b.size(); i++){
 	    if (currentb >= b.size() ||
 		(currentb < b.size() && currenta < a.size() 
@@ -60,9 +65,5 @@ public class Sorts{
 	}
 	return result;
     }
-
-    public static String name(){
-        return "Yu, Vanessa";
-    }
-
+       
 }
