@@ -5,6 +5,29 @@ public class MyLinkedList{
 	head=null;
     }
     
+    //make prelist node
+
+    public Node getNode(int i) throws Exception{
+	node n = head;
+	
+	if (i<0){
+	    throw new Exception("Linked List index negative out of bounds");
+	}
+
+	while (i>0){
+	    if (current.getNext() != null){
+		current = current.getNext();
+		i--;
+	    }
+	    else{
+		throw new Exception("Linked List index out of bounds");
+	    }
+	}
+    }
+    
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //SET IT TO A VARIABLE TO DO LATER
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     public int length(){
 	size = 0;
 	Node next = head;;
@@ -16,10 +39,7 @@ public class MyLinkedList{
     }
     
     public String get(int position){
-	Node n = head;
-	for (int i=0; i<position; i++){
-	    n = n.getNext();
-	}
+	Node n = getNode(i);
 	return n.toString();
     }
     
@@ -35,28 +55,52 @@ public class MyLinkedList{
 
     public void add(String s, int position) {
 	//if pos >= len throw exception
-
-
-
+	
 	//create node with s
-
-	//set new node's next to pos+1
-
-	//set pos-1's node to pos
+	Node n = new Node(s);
+	
+	if (i==0){
+	    n.setNext(head);
+	    head=tmp;
+	}
+	
+	else{
+	    Node pos = getNode(position-1);
+	    
+	    n.setNext(current.getNext());
+	    current.setNext(n);
+	}
     }
     
     public void set(int position,String newString) {
 	//get to pos
+	Node n = getNode(position);
 
 	//setdata to newstring
+	n.setData(newString);
     }
       
-    public void remove(int position) {
-	//get to pos-1
+    public void remove(int position) throws Exception{
+	//if removing from 0 cannot because removing from empty list
+	if (i==0){
+	    if(head==null){
+		throw new Exception("Removing from empty list");
+	    }
+	}
 	
-	//set pos-1's next to pos+1
+	//get to pos-1
+	Node pos = getNode(position -1);
+	Node removed = getNode(position);
+	//if one before doesn't exist cannot because doesn't exist
+	if(pos.getNext() == null){
+	    throw new Exception("Node doesn't exist");
+	}
 
+	//set pos-1's next to pos+1
+	pos.setNext(pos.getNext().getNext());
+	
 	//set pos's next to null
+	removed.setNext(null);
     }
       
     public int find(String s){

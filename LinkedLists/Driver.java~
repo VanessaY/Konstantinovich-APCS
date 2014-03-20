@@ -1,0 +1,30 @@
+public class Driver{
+    public static void main(String [] args){
+	Node n1;
+	
+	n1 = new Node("Tommy");
+	System.out.println(n1);
+	//n1.next is null
+	
+	Node n2 = new Node("Gina");
+	System.out.println(n2);
+	//n2.next is null
+	
+	n1.setNext(n2);
+	//What will this do?
+	//System.out.println(n1);
+		
+	n2.setNext(new Node("BonJovi"));
+	
+	//What will this do?
+	//System.out.println(n1);
+	//how do we delete the node after n1?
+	//can we do it without knowing that n2 is the next node?
+	
+	
+	//lets pretend we didn't remove n2, 
+	//and see what this would do:
+	Node last = n1.getNext().getNext();
+	last.setNext(n1);
+    }
+}
