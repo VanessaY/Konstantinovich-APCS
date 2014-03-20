@@ -1,26 +1,6 @@
 public class MyLinkedList{
     private Node head;
 
-    /*
-      -void add(String s, int position) 
-      //create a node containing s and add it to the position location. 
-      Throw an exception if position>=length of the list.
-      
-      -void set(int position,String newString) 
-      // change the value of the string found at 
-      the indicated position to newString
-      
-      -void remove(int position)
-      //remove the Node from that location.
-      
-      -int find(String s)
-      //return the location of the 1st occurance of s in the list, -1 if the string isn't found.
-      
-      -String toString() 
-      //convert the list to a string in the format 
-      "[ word1 , word2 , word3]"
-    */
-    
     public MyLinkedList(){
 	head=null;
     }
@@ -44,7 +24,50 @@ public class MyLinkedList{
     }
     
     public String toString(){
-	String[] s = new String(length);
-	//stuff KEEP DO
+	String[] s = new String(length());
+        Node n = head;
+	for (int i=0; i<length(); i++){
+	    s[i] = n.toString();
+	    n = n.getNext();
+	}
+	return Arrays.toString(s);
     }
+
+    public void add(String s, int position) {
+	//if pos >= len throw exception
+
+
+
+	//create node with s
+
+	//set new node's next to pos+1
+
+	//set pos-1's node to pos
+    }
+    
+    public void set(int position,String newString) {
+	//get to pos
+
+	//setdata to newstring
+    }
+      
+    public void remove(int position) {
+	//get to pos-1
+	
+	//set pos-1's next to pos+1
+
+	//set pos's next to null
+    }
+      
+    public int find(String s){
+	Node n = head;
+	for (int i=0; i<length(); i++){
+	    if (n.getData().equals(s)){
+		return i;
+	    }
+	    n = n.getNext();
+	}
+	return -1;
+    }
+
 }
