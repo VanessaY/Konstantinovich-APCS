@@ -1,9 +1,0 @@
-public class Driver{
-    public static void main(String[] args){
-	Hail h = new Hail();
-	h.hail(5);
-	System.out.println("");
-	System.out.println("Length: " + h.hailLen(5));
-	System.out.println("");
-    }
-}
