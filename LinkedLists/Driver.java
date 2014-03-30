@@ -1,10 +1,10 @@
 public class Driver{
-    public static void main(String [] args){
-	//MyLinkedList m = new MyLinkedList();
-	Node n = new Node("asdf");
-	System.out.println(n.getNext());
-	Node n2 = new Node("ghjk");
-	n.setNext(n2);
-	System.out.println(n.getNext)
+    public static void main(String[] args) {
+	MyLinkedList<String> l = new MyLinkedList();
+	l.add("asdf", 0);
+	l.add("qwer", 1);
+	l.add("zxcv", 2);
+	l.add("2345", 2);
+	System.out.println(l.get(2));
     }
 }

@@ -1,117 +1,105 @@
-public class MyLinkedList{
-    private Node head;
+import java.util.*;
+
+public class MyLinkedList<T>{
+    private Node<T> head;
+    private int length;
+
 
     public MyLinkedList(){
-	head=null;
-    }
-    
-    //make prelist node
-
-    public Node getNode(int i) throws Exception{
-	node n = head;
-	
-	if (i<0){
-	    throw new Exception("Linked List index negative out of bounds");
-	}
-
-	while (i>0){
-	    if (current.getNext() != null){
-		current = current.getNext();
-		i--;
-	    }
-	    else{
-		throw new Exception("Linked List index out of bounds");
-	    }
-	}
-    }
-    
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //SET IT TO A VARIABLE TO DO LATER
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    public int length(){
-	size = 0;
-	Node next = head;;
-	while(next != null){
-	    size++;
-	    next = next.getNext();
-	}
-	return size;
-    }
-    
-    public String get(int position){
-	Node n = getNode(i);
-	return n.toString();
-    }
-    
-    public String toString(){
-	String[] s = new String(length());
-        Node n = head;
-	for (int i=0; i<length(); i++){
-	    s[i] = n.toString();
-	    n = n.getNext();
-	}
-	return Arrays.toString(s);
+	head = new Node<T>(null);
     }
 
-    public void add(String s, int position) {
-	//if pos >= len throw exception
-	
-	//create node with s
-	Node n = new Node(s);
-	
-	if (i==0){
-	    n.setNext(head);
-	    head=tmp;
+    //I got this from Elise
+    public Node<T> getNode(int i){
+	if (i<-1 || i>length){
+	    throw new IndexOutOfBoundsException();
+	}
+	return getNode(head, -1, i);
+    }
+
+    public Node<T> getNode(Node<T> current, int currentPos, int pos){
+	if (currentPos == pos){
+	    return current;
+	}
+	else{
+	    return getNode(current.getNext(), currentPos+1, pos);
+	}
+    }
+
+    public T get(int pos){
+	if (pos<0 || pos>length){
+	    throw new IndexOutOfBoundsException();
+	}
+	else{
+	    return getNode(pos).getData();
+	}
+    }
+    
+    public void add(T s){
+	add(s, 0);
+    }
+
+    public void add(T s, int pos){
+	if (pos<0 || pos>length){
+	    throw new IndexOutOfBoundsException();
 	}
 	
 	else{
-	    Node pos = getNode(position-1);
-	    
-	    n.setNext(current.getNext());
-	    current.setNext(n);
-	}
+	    Node<T> n = new Node<T>(s);
+	    Node<T> before = getNode(pos-1);
+	    Node<T> after = before.getNext();
+	    n.setNext(after);
+	    before.setNext(n);
+	    length++;
+	}   
     }
-    
-    public void set(int position,String newString) {
-	//get to pos
-	Node n = getNode(position);
 
-	//setdata to newstring
-	n.setData(newString);
-    }
-      
-    public void remove(int position) throws Exception{
-	//if removing from 0 cannot because removing from empty list
-	if (i==0){
-	    if(head==null){
-		throw new Exception("Removing from empty list");
-	    }
-	}
-	
-	//get to pos-1
-	Node pos = getNode(position -1);
-	Node removed = getNode(position);
-	//if one before doesn't exist cannot because doesn't exist
-	if(pos.getNext() == null){
-	    throw new Exception("Node doesn't exist");
+    public void remove(int pos){
+	if (pos<0 || pos>length){
+	    throw new IndexOutOfBoundsException();
 	}
 
-	//set pos-1's next to pos+1
-	pos.setNext(pos.getNext().getNext());
-	
-	//set pos's next to null
-	removed.setNext(null);
+	else{
+	    Node<T> n = getNode(pos);
+	    Node<T> before = getNode(pos-1);
+	    Node<T> after = getNode(pos+1);
+	    before.setNext(after);
+	    length--;
+	}
     }
-      
-    public int find(String s){
-	Node n = head;
-	for (int i=0; i<length(); i++){
-	    if (n.getData().equals(s)){
+
+    public void set (int pos, T t){
+	if (pos<0 || pos>=length){
+	    throw new IndexOutOfBoundsException();
+	}
+
+	getNode(pos).setData(t);
+    }
+
+    public int find(T t){
+	Node<T> current = head.getNext();
+	for (int i=0; i<length; i++){
+	    if (current.getData().equals(t)){
 		return i;
 	    }
-	    n = n.getNext();
+	    current = current.getNext();
 	}
 	return -1;
     }
 
-}
+    public int length(){
+	return length;
+    }
+
+    public String toString(){
+	String[] s = new String[length];
+	Node current = head.getNext();
+	for (int i=0; i<length; i++){
+	    s[i] = current.getData().toString();
+	    current = current.getNext();
+	}
+	return Arrays.toString(s);
+    }
+
+}   
+
